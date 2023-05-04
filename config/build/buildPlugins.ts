@@ -2,6 +2,7 @@ import webpack from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import plugin from 'babel-plugin-i18next-extract';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -9,7 +10,7 @@ export function buildPlugins({
   isDev,
   analyze,
 }: BuildOptions): webpack.WebpackPluginInstance[] {
-  return [
+  const plugins = [
     new HTMLWebpackPlugin({
       template: paths.html,
     }),
@@ -21,9 +22,18 @@ export function buildPlugins({
     new webpack.DefinePlugin({
       __IS_DEV__: JSON.stringify(isDev),
     }),
-    new webpack.HotModuleReplacementPlugin(),
-    new BundleAnalyzerPlugin({
-      analyzerMode: analyze ? 'server' : 'disabled',
-    }),
   ];
+
+  if (isDev) {
+    plugins.push(
+      new webpack.HotModuleReplacementPlugin(),
+    );
+    plugins.push(
+      new BundleAnalyzerPlugin({
+        analyzerMode: analyze ? 'server' : 'disabled',
+      }),
+    );
+  }
+
+  return plugins;
 }
