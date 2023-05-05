@@ -6,14 +6,17 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import 'shared/configs/i18n/i18n';
 import 'app/styles/index.scss';
+import { StoreProvider } from 'app/providers/StoreProvider';
 
 render(
-  <Router>
-    <ErrorBoundary>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
-    </ErrorBoundary>
-  </Router>,
+  <StoreProvider>
+    <Router>
+      <ErrorBoundary>
+        <ThemeProvider>
+          <App />
+        </ThemeProvider>
+      </ErrorBoundary>
+    </Router>
+  </StoreProvider>,
   document.getElementById('root'),
 );
