@@ -1,4 +1,22 @@
 {
+  "Lorem ipsum dolor sit, amet consectetur \n        adipisicing elit": {
+    " Tempore assumenda aspernatur, \n        quos officiis porro magnam": {
+      " Officia aliquid, \n        exercitationem iure aut dicta voluptatem at qui odio a sit quisquam": {
+        " A, soluta": {
+          "\n        ": "\n        "
+        }
+      }
+    }
+  },
+  "Lorem ipsum dolor sit, amet consectetur adipisicing elit": {
+    " Tempore assumenda aspernatur, quos officiis porro magnam": {
+      " Officia aliquid, exercitationem iure aut dicta voluptatem at qui odio a sit quisquam": {
+        " A, soluta": {
+          "": ""
+        }
+      }
+    }
+  },
   "throw error": "throw error",
   "Войти": "Войти",
   "Вызвать ошибку": "Вызвать ошибку",
