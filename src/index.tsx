@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import 'shared/configs/i18n/i18n';
+import 'app/styles/index.scss';
 
 render(
   <Router>
