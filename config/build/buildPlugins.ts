@@ -2,7 +2,6 @@ import webpack from 'webpack';
 import HTMLWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
-import plugin from 'babel-plugin-i18next-extract';
 import { BuildOptions } from './types/config';
 
 export function buildPlugins({
@@ -24,14 +23,15 @@ export function buildPlugins({
     }),
   ];
 
+  plugins.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: analyze ? 'server' : 'disabled',
+    }),
+  );
+
   if (isDev) {
     plugins.push(
       new webpack.HotModuleReplacementPlugin(),
-    );
-    plugins.push(
-      new BundleAnalyzerPlugin({
-        analyzerMode: analyze ? 'server' : 'disabled',
-      }),
     );
   }
 
