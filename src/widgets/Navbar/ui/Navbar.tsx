@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { useCallback, useState } from 'react';
+import { memo, useCallback, useState } from 'react';
 import { Button } from 'shared/ui/Button';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUsername';
@@ -12,55 +12,57 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
-  const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
-  const { t } = useTranslation();
-  const authData = useSelector(getUserAuthData);
-  const dispatch = useDispatch();
+export const Navbar = memo(
+  ({ className }: NavbarProps) => {
+    const [isAuthModal, setIsAuthModal] = useState<boolean>(false);
+    const { t } = useTranslation();
+    const authData = useSelector(getUserAuthData);
+    const dispatch = useDispatch();
 
-  const onCloseModal = useCallback(() => {
-    setIsAuthModal(false);
-  }, []);
+    const onCloseModal = useCallback(() => {
+      setIsAuthModal(false);
+    }, []);
 
-  const onOpenModal = useCallback(() => {
-    setIsAuthModal(true);
-  }, []);
+    const onOpenModal = useCallback(() => {
+      setIsAuthModal(true);
+    }, []);
 
-  const onLogout = useCallback(() => {
-    dispatch(userActions.logout());
-  }, [dispatch]);
+    const onLogout = useCallback(() => {
+      dispatch(userActions.logout());
+    }, [dispatch]);
 
-  if (authData) {
+    if (authData) {
+      return (
+        <div className={classNames(cls.navbar, {}, [className])}>
+          <Button
+            theme={ButtonTheme.CLEAR_INVERTED}
+            onClick={onLogout}
+            className={cls.links}
+          >
+            {t('Выйти')}
+          </Button>
+        </div>
+      );
+    }
+
     return (
       <div className={classNames(cls.navbar, {}, [className])}>
         <Button
           theme={ButtonTheme.CLEAR_INVERTED}
-          onClick={onLogout}
+          onClick={onOpenModal}
           className={cls.links}
         >
-          {t('Выйти')}
+          {t('Войти')}
         </Button>
+        {
+          isAuthModal && (
+            <LoginModal
+              isOpen={isAuthModal}
+              onClose={onCloseModal}
+            />
+          )
+        }
       </div>
     );
-  }
-
-  return (
-    <div className={classNames(cls.navbar, {}, [className])}>
-      <Button
-        theme={ButtonTheme.CLEAR_INVERTED}
-        onClick={onOpenModal}
-        className={cls.links}
-      >
-        {t('Войти')}
-      </Button>
-      {
-        isAuthModal && (
-          <LoginModal
-            isOpen={isAuthModal}
-            onClose={onCloseModal}
-          />
-        )
-      }
-    </div>
-  );
-};
+  },
+);
