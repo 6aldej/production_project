@@ -4,7 +4,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
-import { ProfileCard, fetchProfileData, profileReducer } from 'entities/Profile';
+import { ProfileCard, fetchProfileData, profileReducer } from 'features/EditableProfileCard';
 import { useEffect } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import cls from './ProfilePage.module.scss';
