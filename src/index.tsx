@@ -9,14 +9,15 @@ import 'app/styles/index.scss';
 import { StoreProvider } from 'app/providers/StoreProvider';
 
 render(
-  <StoreProvider>
-    <Router>
+
+  <Router>
+    <StoreProvider>
       <ErrorBoundary>
         <ThemeProvider>
           <App />
         </ThemeProvider>
       </ErrorBoundary>
-    </Router>
-  </StoreProvider>,
+    </StoreProvider>
+  </Router>,
   document.getElementById('root'),
 );
