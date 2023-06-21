@@ -107,13 +107,15 @@
       "id": "1",
       "username": "admin",
       "password": "0000",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://bipbap.ru/wp-content/uploads/2022/11/1652235714_41-kartinkin-net-p-prikolnie-kartinki-dlya-stima-44.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "0000",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://avatars.githubusercontent.com/u/2177912?v=4"
     }
   ],
   "profile": {

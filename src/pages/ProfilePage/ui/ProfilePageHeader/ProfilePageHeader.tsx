@@ -8,7 +8,7 @@ import {
   profileActions,
   updateProfileData,
 } from 'features/EditableProfileCard';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { useCallback } from 'react';
 import cls from './ProfilePageHeader.module.scss';
 
