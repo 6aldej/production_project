@@ -5,8 +5,7 @@ import { Input } from 'shared/ui/Input/Input';
 import { ButtonTheme } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
 import { memo, useCallback } from 'react';
-import { Text } from 'shared/ui/Text';
-import { TextTheme } from 'shared/ui/Text/Text';
+import { Text, TextTheme } from 'shared/ui/Text';
 import {
   DynamicModuleLoader,
   ReducersList,
